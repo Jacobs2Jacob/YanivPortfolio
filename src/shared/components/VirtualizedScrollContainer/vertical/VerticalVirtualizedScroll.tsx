@@ -7,20 +7,20 @@ import { useVirtualizedController } from '../useVirtualizedController';
 const DEFAULT_ITEM_HEIGHT = 250;
 const MIN_ITEM_WIDTH = 180;
 
-const VerticalVirtualizedScroll = ({
+const VerticalVirtualizedScroll = <T,>({
     items,
     renderItem,
     onScrollEnd,
     onScrollStateChange,
     estimateSize = DEFAULT_ITEM_HEIGHT,
-}: VirtualizedScrollProps) => {
+}: VirtualizedScrollProps<T>) => {
 
     const { containerRef, width: containerWidth } = useContainerWidth(); 
     const itemsPerRow = Math.max(1, Math.floor(containerWidth / MIN_ITEM_WIDTH));
 
     // Group items into rows based on itemsPerRow
     const rows = useMemo(() => {
-        const grouped: any[][] = [];
+        const grouped: T[][] = [];
 
         for (let i = 0; i < items.length; i += itemsPerRow) {
             grouped.push(items.slice(i, i + itemsPerRow));

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState, useRef } from 'react';
 
-export function useContainerWidth() {
+export const useContainerWidth = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [width, setWidth] = useState(0);
 

@@ -3,14 +3,14 @@ import styles from './HorizontalVirtualizedScroll.module.css';
 import { VirtualizedScrollProps } from '../types';
 import { useVirtualizedController } from '../useVirtualizedController';  
 
-interface HorizontalProps extends VirtualizedScrollProps {
+interface HorizontalProps<T> extends VirtualizedScrollProps<T> {
     showNavWhileLoading?: boolean;
     totalRows?: number;
 }
 
 const DEFAULT_ITEM_WIDTH = 270; 
 
-const HorizontalVirtualizedScroll =({
+const HorizontalVirtualizedScroll = <T,>({
     items,
     renderItem,
     onScrollEnd,
@@ -18,13 +18,13 @@ const HorizontalVirtualizedScroll =({
     estimateSize = DEFAULT_ITEM_WIDTH,
     showNavWhileLoading = false,
     totalRows = 2,
-}: HorizontalProps) => {
+}: HorizontalProps<T>) => {
     const [canScrollBack, setCanScrollBack] = useState(false);
     const [canScrollForward, setCanScrollForward] = useState(false);
 
     // Group items into columns based on totalRows
     const columns = useMemo(() => {
-        const grouped: any[][] = [];
+        const grouped: T[][] = [];
 
         for (let i = 0; i < items.length; i += totalRows) {
             grouped.push(items.slice(i, i + totalRows));

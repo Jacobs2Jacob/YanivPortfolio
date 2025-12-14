@@ -13,7 +13,7 @@ interface UseVirtualizedControllerProps {
 
 type ScrollDirection = 'backward' | 'forward';
 
-export function useVirtualizedController({
+export const useVirtualizedController = ({
     count,
     estimateSize,
     horizontal,
@@ -21,7 +21,7 @@ export function useVirtualizedController({
     onScrollStateChange = () => {},
     scrollByOffsetSize,
     overscan = horizontal ? 2 : 3,
-}: UseVirtualizedControllerProps) {
+}: UseVirtualizedControllerProps) => {
     const scrollRef = useRef<HTMLDivElement>(null);
     const hasReachedEnd = useRef(false);
 

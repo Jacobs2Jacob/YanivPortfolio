@@ -1,8 +1,8 @@
 
 
-export interface VirtualizedScrollProps {
-    items: any[];
-    renderItem: (item: any, index: number) => React.ReactNode;
+export interface VirtualizedScrollProps<T> {
+    items: T[];
+    renderItem: (item: T, index: number) => React.ReactNode;
     onScrollEnd: () => void;
     onScrollStateChange?: (canScrollBack: boolean, canScrollForward: boolean) => void;
     estimateSize?: number;
