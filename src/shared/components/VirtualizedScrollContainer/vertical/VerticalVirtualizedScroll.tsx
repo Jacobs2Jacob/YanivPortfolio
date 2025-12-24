@@ -12,6 +12,7 @@ const VerticalVirtualizedScroll = <T,>({
     renderItem,
     onScrollEnd,
     onScrollStateChange,
+    isLoading,
     estimateSize = DEFAULT_ITEM_HEIGHT,
 }: VirtualizedScrollProps<T>) => {
 
@@ -34,6 +35,7 @@ const VerticalVirtualizedScroll = <T,>({
         virtualizer,
         handleScroll,
     } = useVirtualizedController({
+        isLoading,
         count: rows.length,
         estimateSize,
         horizontal: false,

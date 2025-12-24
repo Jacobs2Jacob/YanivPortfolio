@@ -4,7 +4,6 @@ import { VirtualizedScrollProps } from '../types';
 import { useVirtualizedController } from '../useVirtualizedController';  
 
 interface HorizontalProps<T> extends VirtualizedScrollProps<T> {
-    showNavWhileLoading?: boolean;
     totalRows?: number;
 }
 
@@ -16,14 +15,12 @@ const HorizontalVirtualizedScroll = <T,>({
     onScrollEnd,
     onScrollStateChange,
     estimateSize = DEFAULT_ITEM_WIDTH,
-    showNavWhileLoading = false,
+    isLoading,
     totalRows = 2,
 }: HorizontalProps<T>) => {
     const [canScrollBack, setCanScrollBack] = useState(false);
     const [canScrollForward, setCanScrollForward] = useState(false);
-    const showLeft = canScrollBack || showNavWhileLoading;
-    const showRight = canScrollForward || showNavWhileLoading;
-
+     
     // Group items into columns based on totalRows
     const columns = useMemo(() => {
         const grouped: T[][] = [];
@@ -41,6 +38,7 @@ const HorizontalVirtualizedScroll = <T,>({
         scrollByOffset,
         handleScroll,
     } = useVirtualizedController({
+        isLoading,
         count: columns.length,
         estimateSize,
         horizontal: true,
@@ -72,7 +70,7 @@ const HorizontalVirtualizedScroll = <T,>({
     return (
         <div className={styles.wrapper}>
             <div style={{ width: '40px' }}>
-                {showLeft && (
+                {canScrollBack && (
                     <button
                         className={styles.navButton}
                         onClick={() => scrollByOffset('backward')}
@@ -128,7 +126,7 @@ const HorizontalVirtualizedScroll = <T,>({
             </div>
             
             <div style={{ width: '40px' }}>
-                {showRight && (
+                {canScrollForward && (
                     <button
                         className={styles.navButton}
                         onClick={() => scrollByOffset('forward')}

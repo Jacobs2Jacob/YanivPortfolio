@@ -6,5 +6,6 @@ export interface VirtualizedScrollProps<T> {
     onScrollEnd: () => void;
     onScrollStateChange?: (canScrollBack: boolean, canScrollForward: boolean) => void;
     estimateSize?: number;
+    isLoading?: boolean;
 }
 

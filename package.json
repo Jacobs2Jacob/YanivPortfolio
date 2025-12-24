@@ -17,7 +17,6 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.55.0",
     "react-router-dom": "^7.5.0",
-    "react-window": "^1.8.11",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
@@ -25,7 +24,6 @@
     "@types/node": "^22.14.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "@types/react-window": "^1.8.8",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",

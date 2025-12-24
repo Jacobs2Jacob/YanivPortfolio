@@ -43,13 +43,14 @@ const Carousel = ({
                         items={items}
                         renderItem={renderItem}
                         onScrollEnd={onReachEnd}
-                        showNavWhileLoading={loading}
+                        isLoading={loading}
                     />
                 ) : (
                     <VerticalVirtualizedScroll
                         items={items}
                         renderItem={renderItem}
                         onScrollEnd={onReachEnd}
+                        isLoading={loading}
                     />
                 )}
             </>} 
